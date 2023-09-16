@@ -72,7 +72,7 @@
       delete_my_account() {
         
         axios
-          .delete('http://localhost:5000/users',{
+          .delete('https://dockerfile-zijif7yiqa-el.a.run.app/users',{
             headers: {
               Authorization: `Bearer ${this.accessToken}`,
             },
@@ -89,7 +89,7 @@
       fetchUsername() {
       
       axios
-        .get('http://localhost:5000/protected', {
+        .get('https://dockerfile-zijif7yiqa-el.a.run.app/protected', {
           headers: {
             Authorization: `Bearer ${this.accessToken}`,
           },
@@ -124,7 +124,7 @@
       const accessToken = this.accessToken;
       const userId = this.userId;
       axios
-        .put(`http://localhost:5000/users/${userId}`, this.editingProfile, {
+        .put(`https://dockerfile-zijif7yiqa-el.a.run.app/users/${userId}`, this.editingProfile, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },

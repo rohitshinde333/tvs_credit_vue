@@ -127,7 +127,7 @@ export default {
 
       // Make API request to login endpoint
       axios
-        .post('http://localhost:5000/login', this.loginData)
+        .post('https://dockerfile-zijif7yiqa-el.a.run.app/login', this.loginData)
         .then(response => {
           // Handle successful login
           console.log('Logged in successfully');
@@ -175,7 +175,7 @@ export default {
 
       // Make API request to signup endpoint
       axios
-        .post('http://localhost:5000/users', this.signupData)
+        .post('https://dockerfile-zijif7yiqa-el.a.run.app/users', this.signupData)
         .then(response => {
           // Handle successful signup
           alert(response.data.message);
@@ -197,7 +197,7 @@ export default {
 
       axios({
         method: 'post',
-        url: 'http://localhost:5000/email',
+        url: 'https://dockerfile-zijif7yiqa-el.a.run.app/email',
         data: emailData,
         headers: {
           'Content-Type': 'application/json',

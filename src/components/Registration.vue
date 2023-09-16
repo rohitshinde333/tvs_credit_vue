@@ -82,7 +82,7 @@
         const service_type = this.selectedServiceType;
         if (service_type == "freelancer"){
             axios
-            .post('http://localhost:5000/freelancer_services', this.freelancerData,{
+            .post('https://dockerfile-zijif7yiqa-el.a.run.app/freelancer_services', this.freelancerData,{
                 headers: {
                     Authorization: `Bearer ${this.accessToken}`,
                 },
@@ -98,7 +98,7 @@
         }
         else if(service_type == "home-maintenance"){
             axios
-            .post('http://localhost:5000/home-maintenance-services', this.homeMaintenanceData,{
+            .post('https://dockerfile-zijif7yiqa-el.a.run.app/home-maintenance-services', this.homeMaintenanceData,{
                 headers: {
                     Authorization: `Bearer ${this.accessToken}`,
                 },
@@ -114,7 +114,7 @@
         }
         else {
             axios
-            .post('http://localhost:5000/labor_services', this.laborData,{
+            .post('https://dockerfile-zijif7yiqa-el.a.run.app/labor_services', this.laborData,{
                 headers: {
                     Authorization: `Bearer ${this.accessToken}`,
                 },

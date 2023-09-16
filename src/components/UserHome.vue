@@ -163,7 +163,7 @@ export default {
 
       if (serviceType == "freelancer") {
         axios
-        .get(`http://localhost:5000/search-freelancers?service_name=${this.searchQuery}`, {
+        .get(`https://dockerfile-zijif7yiqa-el.a.run.app/search-freelancers?service_name=${this.searchQuery}`, {
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
@@ -178,7 +178,7 @@ export default {
       }
       else if (serviceType == "labor") {
         axios
-        .get(`http://localhost:5000/search-labor?service_name=${this.searchQuery}&location=${location}`, {
+        .get(`https://dockerfile-zijif7yiqa-el.a.run.app/search-labor?service_name=${this.searchQuery}&location=${location}`, {
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
@@ -193,7 +193,7 @@ export default {
       }
       else {
         axios
-        .get(`http://localhost:5000/search-home-maintenance?service_name=${this.searchQuery}&location=${location}`, {
+        .get(`https://dockerfile-zijif7yiqa-el.a.run.app/search-home-maintenance?service_name=${this.searchQuery}&location=${location}`, {
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
@@ -211,7 +211,7 @@ export default {
   
     deleteMyAccount() {
       axios
-        .delete('http://localhost:5000/users', {
+        .delete('https://dockerfile-zijif7yiqa-el.a.run.app/users', {
           headers: {
             Authorization: `Bearer ${this.accessToken}`,
           },
@@ -228,7 +228,7 @@ export default {
       const store = useStore();
       const accessToken = store.getters.accessToken;
       axios
-        .get('http://localhost:5000/protected', {
+        .get('https://dockerfile-zijif7yiqa-el.a.run.app/protected', {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
@@ -271,7 +271,7 @@ export default {
       const accessToken = this.accessToken;
       const userId = this.userId;
       axios
-        .put(`http://localhost:5000/users/${userId}`, this.editingProfile, {
+        .put(`https://dockerfile-zijif7yiqa-el.a.run.app/users/${userId}`, this.editingProfile, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
