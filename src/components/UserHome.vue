@@ -69,18 +69,7 @@
       </div>
     </section>
   
-      <!-- New Category Launches Section -->
-      <section>
-        <div >
-          <h2>New Category Launches</h2>
-          <div  v-for="(category, index) in newCategories" :key="index">
-            <img :src="category.image" :alt="category.title" />
-
-            <h3>{{ category.name }}</h3>
-            <p>{{ category.description }}</p>
-          </div>
-        </div>
-      </section>
+      
   </div>
     
   
