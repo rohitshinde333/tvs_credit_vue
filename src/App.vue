@@ -22,7 +22,7 @@
       </ul>
     </nav>
     
-      <router-view style="margin-top: 100px; "></router-view>
+      <router-view style="margin-top: 80px; "></router-view>
       
       <footer class="app-footer" style="margin-top: 100px; margin-bottom: 0%;">
         <div class="footer-content">
@@ -120,7 +120,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   font-size: larger;
+ 
 }
+
+
 
 /* Navbar Styles */
 
@@ -155,7 +158,7 @@ router-link:hover {
   left: 0;
   height: 10%;
   width: 100%;
-  background-color: #ffffff; /* Facebook's blue color */
+  background-color: black; /* Facebook's blue color */
   padding: 10px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;

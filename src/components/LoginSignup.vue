@@ -48,6 +48,7 @@
         <button type="submit" class="btn btn-success mt-3">Signup</button>
       </form>
     </div>
+    <loading-spinner v-if="isLoading" />
   </div>
 </template>
 
@@ -55,14 +56,17 @@
 import axios from 'axios';
 import AdminHome from './AdminHome.vue';
 import UserHome from './UserHome.vue';
+import LoadingSpinner from './LoadingSpinner.vue';
 
 export default {
   components: {
     AdminHome,
     UserHome,
+    LoadingSpinner,
   },
   data() {
     return {
+      isLoading: false,
       showLogin: false,
       showSignup: false,
       loginData: {
@@ -124,7 +128,7 @@ export default {
     },
     login(event) {
       event.preventDefault();
-
+      this.isLoading = true;
       // Make API request to login endpoint
       axios
         .post('https://dockerfile-zijif7yiqa-el.a.run.app/login', this.loginData)
@@ -159,7 +163,8 @@ export default {
             this.$router.push('/TheatreAdminHome');
           } else {
             this.$router.push('/home')
-          }
+          };
+          this.isLoading = false;
         })
         .catch(error => {
           // Handle login error
@@ -172,7 +177,7 @@ export default {
 
     async signup(event) {
       event.preventDefault();
-
+      this.isLoading = true;
       // Make API request to signup endpoint
       axios
         .post('https://dockerfile-zijif7yiqa-el.a.run.app/users', this.signupData)
@@ -181,6 +186,7 @@ export default {
           alert(response.data.message);
           console.log('Signed up successfully');
           this.sendEmail();
+          this.isLoading = false;
         })
         .catch(error => {
           // Handle signup error

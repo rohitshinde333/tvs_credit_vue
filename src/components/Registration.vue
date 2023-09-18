@@ -50,7 +50,7 @@
           <input type="text" v-model="laborData.serviceAreas" id="serviceAreas">
         </div>
 
-      <button type="submit" class="register-button">Register</button>
+      <button type="submit" class="register-button" style="margin-top: 20px;">Register</button>
     </form>
   </div>
 </template>
@@ -68,7 +68,17 @@ export default {
         skills: '',
         portfolio: '',
       },
-      // Define data objects for 'home-maintenance' and 'labor' here
+      homeMaintenanceData: {
+          skills: '',
+          availability: '',
+          serviceAreas: '',
+          certifications: '',
+        },
+        laborData: {
+          physicalCapabilities: '',
+          hourlyRate: 0,
+          availability: '',
+        },
     };
   },
   computed: {
@@ -76,17 +86,67 @@ export default {
   },
   methods: {
     register() {
-      // Handle registration logic based on the selected service type
-      // You can keep your existing logic here
-    },
+        const service_type = this.selectedServiceType;
+        if (service_type == "freelancer"){
+            axios
+            .post('https://dockerfile-zijif7yiqa-el.a.run.app/freelancer_services', this.freelancerData,{
+                headers: {
+                    Authorization: `Bearer ${this.accessToken}`,
+                },
+            })
+            .then((response) => {
+                alert('Registration successful!');
+                // Redirect to login page or perform any other action
+            })
+            .catch((error) => {
+                console.error('Registration failed:', error);
+                // Handle registration error
+            });
+        }
+        else if(service_type == "home-maintenance"){
+            axios
+            .post('https://dockerfile-zijif7yiqa-el.a.run.app/home-maintenance-services', this.homeMaintenanceData,{
+                headers: {
+                    Authorization: `Bearer ${this.accessToken}`,
+                },
+            })
+            .then((response) => {
+                alert('Registration successful!');
+                // Redirect to login page or perform any other action
+            })
+            .catch((error) => {
+                console.error('Registration failed:', error);
+                // Handle registration error
+            });
+        }
+        else {
+            axios
+            .post('https://dockerfile-zijif7yiqa-el.a.run.app/labor_services', this.laborData,{
+                headers: {
+                    Authorization: `Bearer ${this.accessToken}`,
+                },
+            })
+            .then((response) => {
+                alert('Registration successful!');
+                // Redirect to login page or perform any other action
+            })
+            .catch((error) => {
+                console.error('Registration failed:', error);
+                // Handle registration error
+            });
+        }
+      },
   },
 };
 </script>
 
 <style scoped>
 .registration-container {
-  text-align: center;
-  padding: 20px;
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  height: 100vh; /* Use the full viewport height */
 }
 
 h1 {
@@ -95,7 +155,7 @@ h1 {
 }
 
 .registration-form {
-  max-width: 400px;
+  width: 2000px;
   margin: 0 auto;
 }
 
@@ -129,5 +189,13 @@ select {
 
 .register-button:hover {
   background-color: #0056b3;
+}
+
+.registration-form {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px; /* Add padding to create space between form content and border */
+  border: 1px solid #ccc; /* Add a 1px solid border with a gray color */
+  border-radius: 5px; /* Add border radius for rounded corners */
 }
 </style>

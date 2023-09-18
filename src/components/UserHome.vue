@@ -54,20 +54,7 @@
         </template>
         
       </div>
-      <section>
-      <div>
-        <h2>Our Services</h2>
-        <vue-carousel :per-page="3" :navigation-enabled="true" :autoplay="true">
-          <vue-carousel-slide v-for="(service, index) in services" :key="index">
-            <div class="service-card">
-              <img :src="service.icon" :alt="service.title" />
-              <h3>{{ service.title }}</h3>
-              <p>{{ service.description }}</p>
-            </div>
-          </vue-carousel-slide>
-        </vue-carousel>
-      </div>
-    </section>
+      
   
       
   </div>
@@ -102,33 +89,8 @@ export default {
       showModal: false,
       selectedServiceType: 'freelancer', // Initialize the selected service type
       queryResults: [],
-      services: [
-          {
-            title: 'Freelancers',
-            description: 'Hire talented freelancers for your projects.',
-            icon: require("../assets/freelancerIcon.jpeg"),
-          },
-          {
-            title: 'Maintenance',
-            description: 'Get professional maintenance services.',
-            icon: require("../assets/maintainaceIcon.jpeg"),
-
-          },
-          {
-            title: 'Vastu Shastra',
-            description: 'Consult experts for Vastu Shastra guidance.',
-            icon: require("../assets/vastuShastraIcon.jpeg"),
-
-          },
-        ],
-        newCategories: [
-          {
-            name: 'Hair Studio for Women',
-            description: 'Explore our new hair studio services.',
-            image: require("../assets/hairSaloon.png")
-          },
-          // Add more new category items as needed
-        ],
+      
+       
     };
   },
   

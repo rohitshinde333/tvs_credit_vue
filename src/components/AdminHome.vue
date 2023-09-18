@@ -25,7 +25,28 @@
       <button type="button" @click="cancelEditProfile" class="btn btn-danger">Cancel</button>
     </form>
     
-    
+    <table class="table">
+      <thead>
+        <tr class="th">
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Service Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="user in registeredUsers" :key="user.id" class="td">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.address }}</td>
+          <td>{{ user.service_type }}</td>
+        </tr>
+      </tbody>
+    </table>
 
     
     
@@ -48,7 +69,7 @@
         taskComplete: false,
         isAuthenticated: false,
         showForm: false,
-        
+        registeredUsers: [],
         showModal: false,
         editingProfile: null,
         userId: 0,
@@ -60,7 +81,8 @@
         
         this.fetchUsername();
         
-      }
+      };
+      this.fetchRegisteredUsers();
     },
     computed: {
       ...mapGetters(['accessToken'])
@@ -147,6 +169,18 @@
     closeModal() {
       this.showModal = false;
     },
+    fetchRegisteredUsers() {
+    axios
+      .get('https://dockerfile-zijif7yiqa-el.a.run.app/users/registered') // Replace with the actual endpoint
+      .then((response) => {
+        // Handle the successful response
+        this.registeredUsers = response.data;
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error('Failed to fetch registered users:', error);
+      });
+  },
     
 
     },
@@ -154,44 +188,7 @@
   </script>
 
 <style>
-.add-movie-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 900px;
-  margin: 0 auto;
-}
 
-.add-theatre-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 900px;
-  margin: 0 auto;
-}
-
-.add-cast-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 900px;
-  margin: 0 auto;
-}
 
 .form-group {
   margin: 10px 0;
