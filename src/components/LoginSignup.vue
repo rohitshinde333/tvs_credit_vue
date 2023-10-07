@@ -1,8 +1,8 @@
 <template>
   <div>
     <div>
-      <button v-if="!showLogin" @click="toggleForm('login')" class="btn btn-primary" style="margin-right: 1.5ch;width: 10ch;">Login</button>
-      <button v-if="!showSignup" @click="toggleForm('signup')" class="btn btn-warning" style="margin-left: 1.5ch; width: 10ch; ">Signup</button>
+      <button v-if="!showLogin" @click="toggleForm('login')" class="btn btn-primary" style="margin-right: 1.5ch;width: 10ch;margin-top:100px;">Login</button>
+      <button v-if="!showSignup" @click="toggleForm('signup')" class="btn btn-warning" style="margin-left: 1.5ch; width: 10ch;margin-top:100px; ">Signup</button>
     </div>
 
     <div v-if="showLogin">

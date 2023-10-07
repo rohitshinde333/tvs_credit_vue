@@ -15,8 +15,9 @@
         </li>
         <li v-else>
           <!-- Display non-admin navigation links -->
+          <router-link to="/"><button class="btn btn-warning">Home</button></router-link> |
           <router-link to="/LoginSignUp"><button class="btn btn-danger">Login SignUp</button></router-link> |
-          <router-link to="/Registration"><button class="btn btn-primary">Looking For Work?</button></router-link> 
+          <router-link to="/About"><button class="btn btn-primary">Abuot Us</button></router-link> 
 
         </li>
       </ul>

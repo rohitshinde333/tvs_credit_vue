@@ -4,50 +4,41 @@
     <section class="hero">
       <div class="hero-content">
         <h1 class="centered-text">
-          <span class="letter" style="color: #FF0000;">C</span>
-          <span class="letter" style="color: #00FF00;">o</span>
-          <span class="letter" style="color: #0000FF;">n</span>
-          <span class="letter" style="color: #FFFF00;">s</span>
-          <span class="letter" style="color: #FF00FF;">t</span>
-          <span class="letter" style="color: #00FFFF;">r</span>
-          <span class="letter" style="color: white;">o</span>
-          <span class="letter" style="color: #FF0000;">F</span>
-          <span class="letter" style="color: #00FF00;">a</span>
-          <span class="letter" style="color: #0000FF;">m</span>
-          <span class="letter" style="color: #FFFF00;">i</span>
-          <span class="letter" style="color: #FF00FF;">l</span>
-          <span class="letter" style="color: #00FFFF;">y</span>
+          <span class="letter" style="color: #000090; font-weight: bold; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">T</span>
+          <span class="letter" style="color: #000090; font-weight: bold; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">V</span>
+          <span class="letter" style="color: #000090; font-weight: bold; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">S</span> 
+          <span class="space"></span>
+          <span class="letter" style="color: #029000;">C</span>
+          <span class="letter" style="color: #029000;">R</span>
+          <span class="letter" style="color: #029000;">E</span>
+          <span class="letter" style="color: #029000;">D</span>
+          <span class="letter" style="color: #029000;">I</span>
+          <span class="letter" style="color: #029000;">T</span>
         </h1>
-        <p style="color: white; font-size: 50px;">
-          Find the best freelancers, maintenance services, and Vastu Shastra experts.
-        </p>
-        <p style="color: white; font-size: 30px;">
-          We are a startup and we want to revolutionize the construction world
-        </p>
+        
+        
         <button @click="exploreServices" class="btn btn-primary">Explore Services</button>
       </div>
     </section>
 
+    
+    
     <!-- Services Section -->
     <section class="services" ref="servicesSection" v-show="showServiceSection">
       <div class="container">
-        <h1 style="font-size: 100px;">Our Services</h1>
-        <vue-carousel :per-page="3" :navigation-enabled="true" :autoplay="true">
-          <vue-carousel-slide v-for="(service, index) in services" :key="index">
-            <div class="card">
-              <img :src="service.icon" :alt="service.title" />
-              <h3 style="font-size: 50px;">{{ service.title }}</h3>
-              <p style="color:#FF0000">{{ service.description }}</p>
-              <p></p>
-              <br>
-              <p></p>
-            </div>
-          </vue-carousel-slide>
-        </vue-carousel>
+        <div class="card-grid">
+          <div
+            v-for="(service, index) in services"
+            :key="index"
+            class="card"
+          >
+            <img :src="service.icon" :alt="service.title" />
+            <h3>{{ service.title }}</h3>
+            <p style="color: #FF0000;">{{ service.description }}</p>
+          </div>
+        </div>
       </div>
     </section>
-
-    <!-- Additional Content Section -->
     
 
    
@@ -56,32 +47,56 @@
 </template>
 
 <script>
-import VueCarousel from 'vue-carousel';
 
 export default {
   data() {
     return {
-      components: {
-        VueCarousel,
-      },
+      
       services: [
         {
-          title: 'Freelancers',
-          description: 'Hire talented freelancers for your projects.',
-          icon: "https://images.pexels.com/photos/461064/pexels-photo-461064.jpeg?auto=compress&cs=tinysrgb&w=600",
+          title: 'Two Wheeler Loan',
+          icon: require('../../public/images/two_wheeler.png'),
         },
         {
-          title: 'Maintenance',
-          description: 'Get professional maintenance services.',
-          icon: "https://images.pexels.com/photos/735319/pexels-photo-735319.jpeg?auto=compress&cs=tinysrgb&w=600",
+          title: 'Used Car Loan',
+          icon: require('../../public/images/four_wheeler.png'),
         },
         {
-          title: 'Vastu Shastra',
-          description: 'Consult experts for Vastu Shastra guidance.',
-          icon: "https://images.pexels.com/photos/6806400/pexels-photo-6806400.jpeg?auto=compress&cs=tinysrgb&w=600",
+          title: 'Tractor Loan',
+          icon: require('../../public/images/tractor.png'),
         },
+        {
+          title: 'Mobile/Consumer Durable Loan',
+          icon: require('../../public/images/mobile.png'),
+        },
+        {
+          title: 'Online Personal Loan',
+          icon: require('../../public/images/personal.png'),
+        },
+        {
+          title: 'INSTACARD',
+          icon: require('../../public/images/card.png'),
+        },
+        {
+          title: 'Used Commercial Vehicle Loan',
+          icon: require('../../public/images/comercial_vehicle.png'),
+        },
+        {
+          title: 'Buisiness And Corporate Loans',
+          icon: require('../../public/images/business.png'),
+        },
+        {
+          title: 'Three Wheeler Loans ',
+          icon: require('../../public/images/three_wheeler.png'),
+        },
+        
       ],
       showServiceSection: false,
+      loanAmount: null,
+      interestRate: null,
+      tenure: null,
+      emi: null,
+      
       
     };
   },
@@ -97,6 +112,7 @@ export default {
         servicesSection.scrollIntoView({ behavior: 'smooth' });
       }, 100); 
     },
+    
   },
 };
 </script>
@@ -104,9 +120,7 @@ export default {
 <style>
 /* Hero Section Styles */
 .hero {
-  background-image: url('https://images.pexels.com/photos/1764702/pexels-photo-1764702.jpeg?auto=compress&cs=tinysrgb&w=600');
-  background-size: cover;
-  background-position: center;
+ 
   color: #fff;
   text-align: center;
   padding: 100px 0;
@@ -130,10 +144,16 @@ export default {
   text-align: center;
 }
 
-/* Apply different colors to each letter */
 .letter {
   display: inline-block;
   font-size: 100px;
+  margin-right: 5px; 
+  font-style: italic;
+}
+
+.space {
+  display: inline-block;
+  width: 20px; /* Adjust the width as needed for spacing */
 }
 
 /* Explore Services Button */
@@ -147,18 +167,6 @@ export default {
   transition: background-color 0.3s;
 }
 
-.services .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.services .card {
-  /* ... (existing styles) */
-
-  /* Add a transition for a smooth effect */
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
 .btn-primary:hover {
   background-color: #0056b3;
 }
@@ -169,9 +177,28 @@ export default {
   padding: 50px 0;
 }
 
+.services .card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px; 
+}
+
+.services .card {
+  width: 100%; /* Each card takes up 100% of its grid cell width */
+  max-width: none; /* Remove the maximum width constraint */
+  height: auto; /* Allow the height to adjust based on content */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+
 .services h2 {
   text-align: center;
   margin-bottom: 40px;
+}
+
+.services .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Additional Content Styles */
@@ -208,5 +235,5 @@ export default {
   font-weight: bold;
 }
 
-/* Add more styles as needed */
+
 </style>
